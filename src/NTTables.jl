@@ -1,4 +1,4 @@
-module Unions
+module NTTables
 
 using Nulls
 
