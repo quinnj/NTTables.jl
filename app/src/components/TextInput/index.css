@@ -1,0 +1,14 @@
+.TextInput {
+    width: 100%;
+}
+
+.TextInput input {
+    background-color: transparent;
+    outline: none;
+    width: 100%;
+    overflow: hidden;
+    border: none;
+    border-bottom: 1px solid var(--color-200);
+    box-shadow: none;
+    padding: 0;
+}

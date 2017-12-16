@@ -1,0 +1,262 @@
+html, body, #root {
+  height: 100% !important;
+  font-family: Roboto,"Helvetica Neue";
+  font-size: 14px;
+  color: var(--tx-color);
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow-y: hidden;
+}
+
+.App {
+  width: 100%;
+  height: 100%;
+}
+
+.Question {
+  cursor: pointer;
+  font-size: 20px;
+  float: right;
+  padding: 7px 20px;
+}
+
+.HelpMenu {
+  overflow-y: auto;
+  background-color: white;
+  color: var(--tx-color);
+  position: absolute;
+  height: 500px;
+  width: 500px;
+  left: 80%;
+  top: 35px;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 2px 1px -1px rgba(0,0,0,.12);
+  padding: 15px;
+}
+
+.Toolbar {
+	background-color: var(--color-500);
+	color: var(--color-50);
+  height: 5%;
+  width: 100%;
+  z-index: 2;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 2px 1px -1px rgba(0,0,0,.12);
+}
+
+.AppManager {
+  background-color: var(--bg-color);
+  height: 95%;
+}
+
+.Nav {
+  width: 20%;
+  min-width: 155px;
+  max-width: 250px;
+  height: 100%;
+}
+
+.NavSection {
+  max-height: 35%;
+  overflow: visible;
+}
+
+#columnList {
+  max-height: 40%;
+}
+
+.NavTitle {
+  line-height: 35px;
+}
+
+.NavDivider {
+  border-top: 1px solid var(--color-200);
+}
+
+.ColumnListItem .SettingsIcon {
+  visibility: hidden;
+}
+
+.ColumnListItem:hover .SettingsIcon {
+  visibility: visible;
+}
+
+.Content {
+  width: 80%;
+  overflow: auto;
+}
+
+.GeneratedQuery {
+  font-size: 18px;
+  background-color: white;
+  color: var(--color-500);
+  position: absolute;
+  top: 14%;
+  left: 22%;
+  width: 65%;
+  /* height: 40%; */
+  padding: 16px;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 2px 1px -1px rgba(0,0,0,.12);
+}
+
+.SourceRowOptions {
+  display: flex;
+  flex-direction: row;
+}
+
+#ContentView input {
+  font-weight: 200;
+  font-size: 18px;
+  width: 40%;
+  /* margin: 15px; */
+}
+
+.ContentTopRow {
+  margin: 15px;
+}
+
+.ContentTopRow .MenuItems {
+  left: -400%;
+}
+
+.SourceOptionsHeader, .SourceCodeRow {
+  justify-content: flex-start;
+  align-content: flex-start;
+}
+
+.DataSource {
+  font-family: Inconsolata;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 15px;
+  /* margin-bottom: 0px; */
+}
+
+.Content .Checkbox {
+  font-size: 12px;
+  margin: 15px;
+  margin-bottom: 0px;
+}
+
+.SourceCodeRow .Button {
+  margin: auto 5px;
+  padding: 10px;
+}
+
+#ContentPreCode {
+  width: 75%;
+  padding-left: 15px;
+}
+
+#ContentCode {
+  width: 75%;
+}
+
+#ContentCode input {
+  color: var(--tx-color_);
+  font-size: 18px;
+  width: 95%;
+  margin: 10px 15px;
+}
+
+#Limit, #Offset {
+  display: flex;
+  flex-direction: column-reverse;
+  width: 15%;
+}
+
+.Checkbox {
+  margin: 14px 0px;
+  padding-bottom: 2px;
+}
+
+.Checkbox input {
+  margin: 0;
+  margin-right: 5px;
+}
+
+.DataTable {
+  display: flex;
+	flex-direction: row;
+  /* box-shadow: 0 1px 3px 0 rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 2px 1px -1px rgba(0,0,0,.12); */
+  margin: 15px;
+}
+
+.FloatingIcons {
+  visibility: hidden;
+  /* margin-top: -50px; */
+  display: flex;
+	flex-direction: row;
+  justify-content: space-between
+}
+
+.FloatingIcon {
+  width: 20px;
+	padding: 5px;
+}
+
+.FloatingIcon:hover {
+	background-color: var(--color-100);
+}
+
+.Column {
+  display: flex;
+  flex-direction: column;
+}
+
+.Column:hover .FloatingIcons {
+	visibility: visible;
+}
+
+.Column:hover .SettingsIcon {
+	visibility: visible;
+}
+
+.cell {
+  max-width: 500px;
+	min-width: 75px;
+  min-height: 20px;
+	text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 8px;
+}
+
+.TableCell {
+  background-color: white;
+  border-left: 1px solid rgba(0,0,0,.12);
+}
+
+.TableCell:nth-child(even) {
+  background-color: var(--cell-color);
+}
+
+.NewColumn .TextInput input {
+  font-size: 18px;
+}
+.NewColumn .NewColumnCode input {
+  font-size: 16px;
+  width: 90%;
+}
+.NewColumn {
+  background-color: white;
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: var(--color-500);
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  /* height: 200px; */
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 2px 1px -1px rgba(0,0,0,.12);
+  padding: 16px;
+  margin-top: -150px; /* Half the height */
+  margin-left: -250px; /* Half the width */
+}
+
+.NewColumnActionButtons {
+  display: flex;
+  flex-direction: row-reverse;
+}

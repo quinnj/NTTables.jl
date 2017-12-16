@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Inconsolata');
+
+:root {
+  --color-50: #EFEBE9;
+  --color-100: #D7CCC8;
+  --color-200: #BCAAA4;
+  --color-300: #A1887F;
+  --color-400: #8D6E63;
+  --color-500: #795548;
+  --color-600: #6D4C41;
+  --color-700: #5D4037;
+  --color-800: #4E342E;
+  --color-900: #3E2723;
+  --bg-color: var(--color-50);
+  --cell-color: rgb(245, 240, 240);
+  --tx-color: var(--color-700);
+}
+
+.smallfont {
+  font-size: 12px;
+}
+
+.flexcolrev {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.flexrow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.flexcol {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.noMargin {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.highlight:hover {
+    background-color: var(--color-100);
+}
+.highlight:focus {
+    background-color: var(--color-100) !important;
+}
+.highlightDark:hover {
+    background-color: var(--color-200);
+}
+.highlightDark:focus {
+    background-color: var(--color-200) !important;
+}
+
+.leftpad {
+    margin-left: 10px;
+}
+
+.innerpad {
+    margin: 5px 10px;
+}
+
+.bottompad {
+    margin-bottom: 10px;
+}
+
+.visible {
+  visibility: visible !important;
+  display: flex;
+}
+
+.hidden {
+  visibility: hidden !important;
+  display: none;
+}
+
+.disabled {
+  opacity: 0.4 !important;
+  pointer-events: none;
+}
+
+.alignleft {
+  text-align: left;
+}
+
+.alignright {
+  text-align: right;
+}
+
+.unselected {
+  background-color: transparent !important;
+}
+
+.selected {
+  background-color: var(--color-100);
+}
+
+.CloseIcon {
+  width: 14px;
+  margin: 3px;
+  display: flex;
+}
+
+.CloseIcon:hover {
+  background-color: var(--color-200);
+}
+
+.SortIcon {
+  width: 18px;
+  margin: 3px;
+}
+
+.FilterIcon {
+  padding-bottom: 0 !important;
+}
+
+.DataTypeIcon {
+  width: 18px;
+}
+
+.SettingsIcon {
+	width: 18px;
+	margin: 3px;
+}
+
+.SettingsIcon:hover {
+	background-color: var(--color-200);
+}
+
+.QuestionIcon {
+  margin: 5px 10px; 
+  float: right;
+}

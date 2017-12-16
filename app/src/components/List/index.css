@@ -1,0 +1,60 @@
+.ListItemsWrapper {
+  height: 60%;
+  overflow: auto;
+  margin-bottom: 5px;
+}
+
+@-moz-document url-prefix() {
+    .ListItemsWrapper {
+        overflow: hidden;
+    }
+}
+
+#columnList .ListItemsWrapper {
+  height: 80%;
+}
+
+.ListItemsWrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.ListItems {
+  width: 111%;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.ListItem {
+    width: 95%;
+}
+
+.ListItemText {
+  line-height: 28px;
+  text-overflow: ellipsis;
+  padding-left: 5px;
+}
+
+.listitem {
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 1px;
+  border-bottom: 1px solid rgba(0, 0, 0, .12);
+  padding: 2.5px 10px;
+}
+
+.listitem:hover .CloseIcon {
+  visibility: visible !important;
+  display: flex;
+}
+
+.listitem:hover {
+  background-color: var(--color-100);
+}
+
+.listitem.dragOverTop {
+  border-top: 2px solid black;
+}
+
+.listitem.dragOverBottom {
+  border-bottom: 2px solid black;
+}

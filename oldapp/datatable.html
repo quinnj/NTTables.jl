@@ -1,0 +1,513 @@
+<html>
+<head>
+<style>
+html {
+	font-family: Roboto,"Helvetica Neue";
+	color: #616161;
+}
+
+body {
+	margin: 0;
+}
+
+#fullpage {
+	width: 100%;
+	height: 100%;
+	min-height: 100%;
+}
+
+#toolbar {
+	background-color: rgb(50,109,230);
+	color: rgb(255,255,255);
+	height: 56px;
+	padding: 0;
+	box-shadow: 0 1px 3px 0 rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 2px 1px -1px rgba(0,0,0,.12);
+	box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+}
+
+#content {
+	background-color: #eee;
+	width: 100%;
+	height: 100%;
+	max-height: 100%;
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	flex-direction: row;
+    box-sizing: border-box;
+    flex: 1 1 auto;
+}
+
+#nav {
+	background-color: transparent;
+    height: 100%;
+    padding-top: 8px;
+    white-space: nowrap;
+    width: 20%;
+	display: flex;
+	flex-direction: column;
+}
+
+.navsection {
+	display: flex;
+	flex-direction: column;
+}
+
+.plusicon {
+	width: 24px;
+	padding: 5px;
+	margin: 5px;
+}
+
+.plusicon:hover {
+	background-color: #E0E0E0;
+}
+
+.viewitem {
+	width: 80%;
+	/* height: 16px; */
+	padding-left: 12px;
+	margin-left: 24px;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 44px;
+	text-align: left;
+	white-space: nowrap;
+	text-transform: none;
+	border-bottom:1px solid #BDBDBD;
+}
+
+.navtitle {
+	font-weight: 500;
+	border-radius: 2px;
+	line-height: 44px;
+	padding-left: 12px;
+	margin-left: 12px;
+	font-size: 14px;
+	text-align: left;
+	text-transform: none;
+	white-space: nowrap;
+}
+
+.navbox {
+	display: flex;
+	flex-direction: column;
+}
+
+.navdivider {
+	border-top: 1px solid #ddd;
+	margin-bottom: 16px;
+	margin-right: 8px;
+	margin-top: 8px;
+}
+
+.canvas {
+	width: 80%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.group { 
+  	position:relative;
+  	margin: 30px 20px 45px 20px;
+}
+
+input {
+  	font-size:18px;
+  	background-color: transparent;
+  	padding:10px 10px 10px 5px;
+  	width:80%;
+  	border:none;
+  	border-bottom:1px solid #757575;
+}
+
+input:focus {
+	outline:none;
+}
+
+.tablecanvas {
+    margin: 20px;
+    font-weight: 400;
+    line-height: 20px;
+    font-size: 14px;
+    letter-spacing: .010em;
+	display: flex;
+}
+
+.table {
+	display: flex;
+	flex-direction: row;
+	overflow: auto;
+    color: rgba(0,0,0,0.87);
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 2px 1px -1px rgba(0,0,0,.12);
+}
+
+.tableheader {
+	color: rgba(0,0,0,.54);
+	background-color: rgba(0,0,0,0.03);
+	font-weight: bold;
+	padding: 8px;
+	max-width: 500px;
+	min-width: 75px;
+	min-height: 20px;
+	overflow: hidden;
+    display: flex;
+	justify-content: space-between;
+	align-items: center;
+    flex-basis: auto;
+    flex-grow: 1;
+    flex-direction: row;
+	border-bottom: 1px solid rgba(0,0,0,.12);
+	border-left: 1px solid rgba(0,0,0,.12);
+}
+
+.floatingIcons {
+	visibility: hidden;
+	display: flex;
+	flex-direction: row;
+	min-height: 20px;
+	position: absolute;
+	margin-top: -35px;
+	margin-left: -8px;
+}
+
+.floatingIcon {
+	width: 20px;
+	padding: 5px;
+}
+
+.floatingIcon:hover {
+	background-color: #E0E0E0;
+}
+
+.dataTypeIcon {
+	width: 18px;
+}
+
+.settingsIcon {
+	width: 20px;
+	padding: 3px;
+}
+
+.settingsIcon:hover {
+	background-color: #BDBDBD;
+}
+
+.columnname {
+	justify-content: center;
+    padding-left: 8px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.tablecolumn:hover .floatingIcons {
+	visibility: visible;
+}
+
+.tableheader .settingsIcon {
+	visibility: hidden;
+}
+
+.tablecolumn:hover .settingsIcon {
+	visibility: visible;
+}
+
+.tableheader .tooltiptext {
+    visibility: hidden;
+    background-color: #757575;
+	opacity: 0.9;
+    color: #fff;
+    text-align: center;
+    padding: 8px 8px;
+	margin-top: 30px;
+    position: absolute;
+    z-index: 1;
+}
+
+.columnname:hover+.tooltiptext {
+    visibility: visible;
+}
+
+.tablecolumn {
+	display: flex;
+	flex-direction: column;
+}
+
+.tablecell {
+	padding: 8px;
+	background-color: #fff;
+	border-left: 1px solid rgba(0,0,0,.12);
+	max-width: 500px;
+	min-width: 75px;
+	min-height: 20px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;	
+}
+
+/* LABEL ======================================= */
+label 				 {
+  color:#999; 
+  font-size:18px;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:5px;
+  top:10px;
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+
+/* active state */
+input:focus ~ label, input:valid ~ label 		{
+  top:-20px;
+  font-size:14px;
+  color:#5264AE;
+}
+
+/* BOTTOM BARS ================================= */
+.bar 	{ position:relative; display:block; width:300px; }
+.bar:before, .bar:after 	{
+  content:'';
+  height:2px; 
+  width:0;
+  bottom:1px; 
+  position:absolute;
+  background:#5264AE; 
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+.bar:before {
+  left:50%;
+}
+.bar:after {
+  right:50%; 
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width:50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+  position:absolute;
+  height:60%; 
+  width:100px; 
+  top:25%; 
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+}
+
+/* active state */
+input:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.3s ease;
+  -moz-animation:inputHighlighter 0.3s ease;
+  animation:inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+
+</style>
+</head>
+
+<body>
+
+<script type="text/javascript">
+
+HOST = "localhost";
+PORT = "8083";
+
+// populate table
+// {"rows": 3, "columns": 2, "header": ["col1", "col2"], "types": [Int, Float64], data": [[1,2,3], [4,5,6]]}
+function populateTable(node, table) {
+	t = node.parentElement.parentElement.parentElement.children[1].children[0]
+	while (t.firstChild) {
+		t.removeChild(t.firstChild)
+	}
+	for (col = 0; col < table.columns; col++) {
+		// create the tablecolumn div
+		tc = document.createElement("div")
+		tc.className = "tablecolumn"
+		t.appendChild(tc)
+		// first row is tableheader cell
+		th = document.createElement("div")
+		th.className = "tableheader"
+		// add data type icon
+		dt = document.createElement("img")
+		dt.className = "dataTypeIcon"
+		typ = table.types[col]
+		isnum = false
+		if (typ === "REAL") {
+			dt.src = "numeric.svg"
+			isnum = true
+		} else if (typ === "TEXT") {
+			dt.src = "alphabetical.svg"
+		} else if (typ === "DATE") {
+			dt.src = "calendar.svg"
+		} else {
+			dt.src = "google-circle-communities.svg"
+		}
+		th.appendChild(dt)
+		// add column name
+		c = document.createElement("div")
+		c.className = "columnname"
+		c.innerText = table.header[col]
+		th.appendChild(c)
+		// add settings icon
+		s = document.createElement("img")
+		s.className = "settingsIcon"
+		s.src = "dots-vertical.svg"
+		th.appendChild(s)
+		// add floating icons
+		fi = document.createElement("div")
+		fi.className = "floatingIcons"
+			f1 = document.createElement("img")
+			f1.src = "ungrouped.svg"
+			f1.className = "floatingIcon"
+			fi.appendChild(f1)
+			f2 = document.createElement("img")
+			f2.src = "information.svg"
+			f2.className = "floatingIcon"
+			fi.appendChild(f2)
+			f3 = document.createElement("img")
+			f3.src = "filter.svg"
+			f3.className = "floatingIcon"
+			fi.appendChild(f3)
+		th.appendChild(fi)
+		tc.appendChild(th)
+		// add each row to column
+		column = table.data[col]
+		for (row = 0; row < table.rows; row++) {
+			cell = document.createElement("div")
+			cell.className = "tablecell"
+			cell.innerText = column[row]
+			if (isnum) {
+				cell.style = "text-align: right"
+			}
+			tc.appendChild(cell)
+		}
+		// set widths of column cells
+		// check if need a tooltip for long column name
+		if (th.children[1].offsetWidth < th.children[1].scrollWidth) {
+			tool = document.createElement("div")
+			tool.className = "tooltiptext"
+			tool.innerText = th.children[1].innerText
+			th.children[1].insertAdjacentElement("afterend", tool)
+		}
+	}
+}
+
+// request table from julia process
+function request(node, code) {
+	// make http request
+    httpRequest = new XMLHttpRequest();
+	httpRequest.onreadystatechange = function() {
+	    if (httpRequest.readyState === XMLHttpRequest.DONE) {
+			if (httpRequest.status === 200) {
+				populateTable(node, JSON.parse(httpRequest.responseText))
+			}
+	    }
+	}
+	httpRequest.open('POST', 'http://' + HOST + ":" + PORT, true);
+	httpRequest.send(code);
+}
+
+function newView(currentView, nextId) {
+	// hide current view divs
+	nodes = document.getElementsByClassName(currentView)
+	for (i = 0; i < nodes.length; i++) {
+		nodes[i].style = "display: none"
+	}
+
+	// 
+	newcanvas = document.getElementById("mastercanvas").cloneNode(true)
+	newcanvas.className = "canvas " + "view_" + nextId
+	document.getElementById("content").appendChild(newcanvas)
+	newcanvas.style = ""
+
+	// 
+	plus = document.getElementById("newview")
+	plus.name = "view_" + nextId
+	plus.dataset.nextId = parseInt(nextId) + 1.0
+}
+
+window.onload = function() {
+	canvas = document.getElementsByClassName("canvas")[0]
+	dupcanvas = canvas.cloneNode(true)
+	dupcanvas.id = "mastercanvas"
+	dupcanvas.style = "display: none"
+	document.getElementById("content").appendChild(dupcanvas)
+	canvas.className = "canvas view_1"
+}
+
+</script>
+
+	<div id="fullpage">
+		<div id="toolbar">
+
+		</div>
+		<div id="content">
+			<div id="nav">
+				<div id="views" class="navsection">
+					<div class="navtitle">Views</div>
+					<div class="viewbox">
+						<div name="view_1_item" class="viewitem">view_1</div>
+						<img id="newview" name="view_1" data-next-id="2" class="plusicon" src="plus.svg" onclick="newView(this.name, this.dataset.nextId)">
+					</div>
+				</div>
+				<div class="navdivider"></div>
+				<div id="sorting" class="navsection">
+					<div class="navtitle">Sorting</div>
+					<div class="sortingbox">
+					
+					</div>
+				</div>
+				<div class="navdivider"></div>
+				<div id="columns" class="navsection">
+					<div class="navtitle">Columns</div>
+					<div class="columnsbox">
+					
+					</div>
+				</div>
+			</div>
+			<div class="canvas">
+				<form>
+				    <div class="group">      
+					    <input type="text" required onfocusout="request(this, this.value)" value='DataFrame(really_really_long_column_name=["hey im an even longer individual text values of a column, pretty cool huh", "ho"],
+						a=[1,2], b=[4.0, 5.0])'>
+					    <span class="highlight"></span>
+					    <span class="bar"></span>
+					    <label>Code</label>
+				    </div>
+				</form>
+				<div class="tablecanvas">
+					<div class="table">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

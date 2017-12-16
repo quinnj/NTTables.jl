@@ -1,0 +1,55 @@
+.Menu {
+  outline: none;
+  position: relative;
+}
+
+.Menu:focus .MenuItems {
+	opacity: 1 !important;
+	visibility: visible !important;
+}
+
+.Menu:focus-within .MenuItems {
+	opacity: 1 !important;
+	visibility: visible !important;
+}
+
+.Menu:focus .SettingsIcon {
+  visibility: visible;
+}
+
+.MenuItems {
+  position: absolute;
+  z-index: 1;
+
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0.5s;
+  top: 100%;
+  left: 20%;
+
+  background-color: white;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px - 1px rgba(0, 0, 0, .12);
+}
+
+.MenuItem {
+  display: inline-block;
+  line-height: 28px;
+  min-width: 120px;
+}
+
+.MenuItem:hover {
+  background-color: var(--color-100) !important;
+}
+
+.MenuText {
+  padding-left: 10px;
+}
+
+.Menu .Button {
+    font-style: italic;
+    font-size: 12px;
+    outline: none;
+    cursor: pointer;
+    border-radius: 3px;
+    padding: 10px;
+}
